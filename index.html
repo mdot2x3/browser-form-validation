@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Validation Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Registration Form</h1>
+      <h2>
+        Please enter your information in the fields below and then click submit
+        to complete your registration. Thank you.
+      </h2>
+    </header>
+    <form action="" id="main-form" novalidate>
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" />
+      <span id="email-error" class="error-message" aria-live="polite"></span>
+      <label for="country">Country</label>
+      <input type="text" name="country" id="country" />
+      <span id="country-error" class="error-message" aria-live="polite"></span>
+      <label for="postal">Postal Code</label>
+      <input type="text" name="postal" id="postal" />
+      <span id="postal-error" class="error-message" aria-live="polite"></span>
+      <label for="password">Password</label>
+      <input type="text" name="password" id="password" />
+      <span id="password-error" class="error-message" aria-live="polite"></span>
+      <label for="confirm">Confirm Password</label>
+      <input type="text" name="confirm" id="confirm" />
+      <span id="confirm-error" class="error-message" aria-live="polite"></span>
+      <button id="submit">Submit</button>
+    </form>
+  </body>
+</html>
