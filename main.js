@@ -22,13 +22,24 @@ const isValidEmail = () => {
   return validity;
 };
 
-// update email input class based on validity
+let emailTouched = false;
+
+// update email input class based on validity and touched state
 const setEmailClass = (isValid) => {
-  email.className = isValid ? "valid" : "invalid";
+  if (!emailTouched) {
+    email.className = "";
+  } else {
+    email.className = isValid ? "valid" : "invalid";
+  }
 };
 
 // update error message and visibility
 const updateError = (isValidInput) => {
+  if (!emailTouched) {
+    emailError.textContent = "";
+    emailError.removeAttribute("class");
+    return;
+  }
   if (isValidInput) {
     emailError.textContent = "";
     emailError.removeAttribute("class");
@@ -36,6 +47,14 @@ const updateError = (isValidInput) => {
     emailError.textContent = "Please enter a valid email.";
     emailError.setAttribute("class", "active");
   }
+};
+
+// handle blur event to mark field as touched
+const handleBlur = () => {
+  emailTouched = true;
+  const emailInput = isValidEmail();
+  setEmailClass(emailInput);
+  updateError(emailInput);
 };
 
 // initialize email validity on page load
@@ -67,5 +86,7 @@ const handleSubmit = (event) => {
 window.addEventListener("load", initializeValidation);
 // this defines what happens when the user types in the field
 email.addEventListener("input", handleInput);
+// add blur event
+email.addEventListener("blur", handleBlur);
 // this defines what happens when the user tries to submit the data
 form.addEventListener("submit", handleSubmit);
